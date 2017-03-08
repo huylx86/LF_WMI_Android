@@ -1,4 +1,4 @@
-package com.finedu.app.activities;
+package com.wmi.finedu.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 
-import com.finedu.app.R;
+import com.wmi.finedu.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -20,6 +20,7 @@ public class SplashActivity extends AppCompatActivity {
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+            finish();
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
             super.handleMessage(msg);
         }

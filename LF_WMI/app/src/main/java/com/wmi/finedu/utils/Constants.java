@@ -1,4 +1,4 @@
-package com.finedu.app.utils;
+package com.wmi.finedu.utils;
 
 /**
  * Created by LENOVO on 3/7/2017.

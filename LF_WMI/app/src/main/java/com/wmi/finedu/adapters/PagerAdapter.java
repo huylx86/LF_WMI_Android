@@ -1,4 +1,4 @@
-package com.finedu.app.adapters;
+package com.wmi.finedu.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

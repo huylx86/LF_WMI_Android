@@ -1,4 +1,4 @@
-package com.finedu.app.fragments;
+package com.wmi.finedu.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.finedu.app.utils.Constants;
+import com.wmi.finedu.utils.Constants;
 
 /**
  * A simple {@link Fragment} subclass.

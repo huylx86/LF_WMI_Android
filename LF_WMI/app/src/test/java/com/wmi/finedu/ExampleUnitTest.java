@@ -1,4 +1,4 @@
-package com.finedu.app;
+package com.wmi.finedu;
 
 import org.junit.Test;
 

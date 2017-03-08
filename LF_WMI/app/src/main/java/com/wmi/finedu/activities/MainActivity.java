@@ -1,4 +1,4 @@
-package com.finedu.app.activities;
+package com.wmi.finedu.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -8,11 +8,11 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.finedu.app.R;
-import com.finedu.app.adapters.PagerAdapter;
-import com.finedu.app.fragments.AboutUsFragment;
-import com.finedu.app.fragments.HomeFragment;
-import com.finedu.app.fragments.VideoFragment;
+import com.wmi.finedu.R;
+import com.wmi.finedu.adapters.PagerAdapter;
+import com.wmi.finedu.fragments.AboutUsFragment;
+import com.wmi.finedu.fragments.HomeFragment;
+import com.wmi.finedu.fragments.VideoFragment;
 
 public class MainActivity extends AppCompatActivity {
 

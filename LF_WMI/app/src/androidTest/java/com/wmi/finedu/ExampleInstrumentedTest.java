@@ -1,4 +1,4 @@
-package com.finedu.app;
+package com.wmi.finedu;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

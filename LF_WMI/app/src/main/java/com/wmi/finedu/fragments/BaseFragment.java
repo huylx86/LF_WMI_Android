@@ -1,4 +1,4 @@
-package com.finedu.app.fragments;
+package com.wmi.finedu.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.finedu.app.R;
-import com.finedu.app.utils.Constants;
+import com.wmi.finedu.R;
+import com.wmi.finedu.utils.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
