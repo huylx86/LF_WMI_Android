@@ -1,10 +1,16 @@
 package com.wmi.finedu.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -18,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     private PagerAdapter mPagerAdapter;
     private TabLayout mTabLayout;
+    private ImageButton mIbContactUs, mIbFacebook;
+    private View mContactUsDetail, mFacebookDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +57,46 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        mIbContactUs = (ImageButton)findViewById(R.id.ib_contact_us);
+        mIbFacebook = (ImageButton)findViewById(R.id.ib_facebook);
+        mContactUsDetail = findViewById(R.id.ln_contact_us_detail);
+        mFacebookDetail = findViewById(R.id.ln_facebook_detail);
+
+        final Animation showAnim = AnimationUtils.loadAnimation(this, R.anim.right_to_left_anim);
+        final Animation hideAnim = AnimationUtils.loadAnimation(this, R.anim.left_to_right_anim);
+
+        mIbContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mContactUsDetail.setVisibility(View.VISIBLE);
+                mContactUsDetail.startAnimation(showAnim);
+            }
+        });
+
+        mIbFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFacebookDetail.setVisibility(View.VISIBLE);
+                mFacebookDetail.startAnimation(showAnim);
+            }
+        });
+
+        mFacebookDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFacebookDetail.startAnimation(hideAnim);
+                mFacebookDetail.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        mContactUsDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mContactUsDetail.startAnimation(hideAnim);
+                mContactUsDetail.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -74,5 +122,11 @@ public class MainActivity extends AppCompatActivity {
             tabTextView.setImageDrawable(tab.getIcon());
             tab.setCustomView(relativeLayout);
         }
+    }
+
+    private void loadbrowser(String url)
+    {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(browserIntent);
     }
 }
