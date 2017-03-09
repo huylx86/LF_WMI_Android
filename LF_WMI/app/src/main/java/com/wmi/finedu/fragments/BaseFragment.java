@@ -92,9 +92,9 @@ public class BaseFragment extends Fragment {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
                 if(url.equalsIgnoreCase(Constants.CONTACT_US_URL)){
-                    loadbrowser(url);
+                    loadBrowser(url);
                 } else if(url.equalsIgnoreCase(Constants.FACEBOOK_URL)) {
-                    loadbrowser(url);
+                    loadBrowser(url);
                 } else {
                     view.loadUrl(url);
                 }
@@ -130,7 +130,7 @@ public class BaseFragment extends Fragment {
         mWebView.loadUrl(url);
     }
 
-    private void loadbrowser(String url)
+    private void loadBrowser(String url)
     {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(browserIntent);

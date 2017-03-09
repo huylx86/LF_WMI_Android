@@ -30,17 +30,24 @@
         android:layout_above="@id/tab_layout"
         android:layout_marginBottom="20dp"
         android:id="@+id/rl_contact_us">
-        <ImageButton android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:padding="10dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/contact_us"
-                android:background="@color/external_icon"
-                android:layout_alignParentRight="true"
-                android:id="@+id/ib_contact_us"/>
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/gold"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/ln_contact_us">
+            <ImageView android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/contact_us"
+                    android:id="@+id/iv_contact_us"/>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="250dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_alignParentRight="true"
             android:orientation="horizontal"
             android:gravity="center_vertical"
@@ -57,26 +64,33 @@
                       android:layout_height="wrap_content"
                       android:textSize="18sp"
                       android:textColor="@android:color/white"
-                      android:text="Contact Us"/>
+                      android:text="@string/contact_us"/>
         </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="2dp"
         android:layout_above="@id/rl_contact_us">
-        <ImageButton android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/facebook"
-            android:background="@color/external_icon"
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="60dp"
             android:layout_alignParentRight="true"
-            android:id="@+id/ib_facebook"/>
+            android:background="@color/gold"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/ln_facebook">
+            <ImageView android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/facebook"
+                android:id="@+id/iv_facebook"/>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="250dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_alignParentRight="true"
             android:gravity="center_vertical"
             android:background="@color/external_icon"
@@ -93,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textColor="@android:color/white"
-                android:text="Facebook"/>
+                android:text="@string/facebook"/>
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>
