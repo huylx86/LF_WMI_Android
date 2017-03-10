@@ -59,12 +59,14 @@
                 android:layout_height="50dp"
                 android:padding="10dp"
                 android:layout_marginRight="5dp"
-                android:src="@drawable/contact_us"/>
+                android:src="@drawable/contact_us"
+                android:id="@+id/iv_contact_us_detail"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:textSize="18sp"
                       android:textColor="@android:color/white"
-                      android:text="@string/contact_us"/>
+                      android:text="@string/contact_us"
+                      android:id="@+id/tv_contact_us_detail"/>
         </LinearLayout>
     </RelativeLayout>
 
@@ -102,12 +104,14 @@
                 android:layout_height="50dp"
                 android:padding="10dp"
                 android:layout_marginRight="5dp"
-                android:src="@drawable/facebook"/>
+                android:src="@drawable/facebook"
+                android:id="@+id/iv_facebook_detail"/>
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textColor="@android:color/white"
-                android:text="@string/facebook"/>
+                android:text="@string/facebook"
+                android:id="@+id/tv_facebook_detail"/>
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

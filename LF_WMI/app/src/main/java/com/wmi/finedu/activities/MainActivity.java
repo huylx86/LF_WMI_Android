@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.wmi.finedu.R;
 import com.wmi.finedu.adapters.PagerAdapter;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private View mContactUs, mFacebook;
     private View mContactUsDetail, mFacebookDetail;
+    private ImageView mIvContactUsDetail, mIvFacebookDetail;
+    private TextView mTvContactUsDetail, mTvFacebookDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
         mFacebook = findViewById(R.id.ln_facebook);
         mContactUsDetail = findViewById(R.id.ln_contact_us_detail);
         mFacebookDetail = findViewById(R.id.ln_facebook_detail);
+        mIvContactUsDetail = (ImageView)findViewById(R.id.iv_contact_us_detail);
+        mIvFacebookDetail = (ImageView)findViewById(R.id.iv_facebook_detail);
+        mTvContactUsDetail = (TextView) findViewById(R.id.tv_contact_us_detail);
+        mTvFacebookDetail = (TextView)findViewById(R.id.tv_facebook_detail);
 
         final Animation showAnim = AnimationUtils.loadAnimation(this, R.anim.right_to_left_anim);
         final Animation hideAnim = AnimationUtils.loadAnimation(this, R.anim.left_to_right_anim);
@@ -71,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 mContactUsDetail.setVisibility(View.VISIBLE);
                 mContactUsDetail.startAnimation(showAnim);
+                mContactUs.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -79,26 +87,65 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 mFacebookDetail.setVisibility(View.VISIBLE);
                 mFacebookDetail.startAnimation(showAnim);
+                mFacebook.setVisibility(View.INVISIBLE);
             }
         });
 
-        mFacebookDetail.setOnClickListener(new View.OnClickListener() {
+        mIvContactUsDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mContactUs.setVisibility(View.VISIBLE);
+                mContactUsDetail.startAnimation(hideAnim);
+                mContactUsDetail.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        mIvFacebookDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFacebook.setVisibility(View.VISIBLE);
+                mFacebookDetail.startAnimation(hideAnim);
+                mFacebookDetail.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        mTvContactUsDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mContactUs.setVisibility(View.VISIBLE);
+                mContactUsDetail.startAnimation(hideAnim);
+                mContactUsDetail.setVisibility(View.INVISIBLE);
+                loadBrowser(Constants.CONTACT_US_URL);
+            }
+        });
+
+        mTvFacebookDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFacebook.setVisibility(View.VISIBLE);
                 mFacebookDetail.startAnimation(hideAnim);
                 mFacebookDetail.setVisibility(View.INVISIBLE);
                 loadBrowser(Constants.FACEBOOK_URL);
             }
         });
 
-        mContactUsDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mContactUsDetail.startAnimation(hideAnim);
-                mContactUsDetail.setVisibility(View.INVISIBLE);
-                loadBrowser(Constants.CONTACT_US_URL);
-            }
-        });
+//        mFacebookDetail.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                mFacebookDetail.startAnimation(hideAnim);
+//                mFacebookDetail.setVisibility(View.INVISIBLE);
+//                loadBrowser(Constants.FACEBOOK_URL);
+//            }
+//        });
+//
+//        mContactUsDetail.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                mContactUsDetail.startAnimation(hideAnim);
+//                mContactUsDetail.setVisibility(View.INVISIBLE);
+//                loadBrowser(Constants.CONTACT_US_URL);
+//            }
+//        });
     }
 
     private void setupViewPager(ViewPager viewPager) {

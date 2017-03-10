@@ -12,7 +12,7 @@
         android:textColor="@android:color/white"
         android:gravity="center"
         android:background="@color/gold"
-        android:text="Wellcome to WMI" />
+        android:text="Welcome to WMI" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
