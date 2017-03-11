@@ -9,9 +9,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wmi.finedu.R;
@@ -78,15 +81,8 @@ public class BaseFragment extends Fragment {
         View view = inflater.inflate(R.layout.page_content, container, false);
         mTvTitle = (TextView)view.findViewById(R.id.tv_title);
         mLoading = (ProgressBar)view.findViewById(R.id.loading);
-        mWebView = (WebView)view.findViewById(R.id.webview);
+        mWebView = (WebView) view.findViewById(R.id.webview);
         mWebView.setWebViewClient(new WebViewClient(){
-//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-//
-//                String url = request.getUrl().toString();
-//                return super.shouldOverrideUrlLoading(view, request);
-//            }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -113,12 +109,15 @@ public class BaseFragment extends Fragment {
                 super.onPageFinished(view, url);
             }
         });
+        mWebView.setWebChromeClient(new MyWebClient());
         mWebView.clearCache(true);
         mWebView.clearHistory();
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+
         return view;
     }
+
 
     protected void setTitle(String title)
     {
@@ -136,10 +135,10 @@ public class BaseFragment extends Fragment {
         startActivity(browserIntent);
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     @Override
@@ -166,5 +165,49 @@ public class BaseFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+
+    public class MyWebClient extends WebChromeClient
+    {
+
+        private View mCustomView;
+        private FrameLayout mCustomViewContainer;
+        private WebChromeClient.CustomViewCallback mCustomViewCallback;
+
+        public MyWebClient() {}
+
+        FrameLayout.LayoutParams LayoutParameters = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
+
+        @Override
+        public void onShowCustomView(View view, CustomViewCallback callback) {
+            if (mCustomView != null) {
+                callback.onCustomViewHidden();
+                return;
+            }
+            mCustomViewContainer = new FrameLayout(getActivity());
+            mCustomViewContainer.setLayoutParams(LayoutParameters);
+            mCustomViewContainer.setBackgroundResource(android.R.color.black);
+            view.setLayoutParams(LayoutParameters);
+            mCustomViewContainer.addView(view);
+            mCustomView = view;
+            mCustomViewCallback = callback;
+            mCustomViewContainer.setVisibility(View.VISIBLE);
+            ((FrameLayout)getActivity().getWindow().getDecorView()).addView(mCustomViewContainer);
+        }
+
+        @Override
+        public void onHideCustomView() {
+            if (mCustomView == null) {
+                return;
+            } else {
+                mCustomView.setVisibility(View.GONE);
+                mCustomViewContainer.removeView(mCustomView);
+                mCustomView = null;
+                mCustomViewContainer.setVisibility(View.GONE);
+                mCustomViewCallback.onCustomViewHidden();
+                ((FrameLayout)getActivity().getWindow().getDecorView()).removeView(mCustomViewContainer);
+            }
+        }
     }
 }
