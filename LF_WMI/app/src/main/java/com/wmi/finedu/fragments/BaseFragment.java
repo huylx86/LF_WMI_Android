@@ -109,7 +109,7 @@ public class BaseFragment extends Fragment {
                 super.onPageFinished(view, url);
             }
         });
-        mWebView.setWebChromeClient(new MyWebClient());
+        mWebView.setWebChromeClient(new CustomWebClient());
         mWebView.clearCache(true);
         mWebView.clearHistory();
         mWebView.getSettings().setJavaScriptEnabled(true);
@@ -168,14 +168,14 @@ public class BaseFragment extends Fragment {
     }
 
 
-    public class MyWebClient extends WebChromeClient
+    public class CustomWebClient extends WebChromeClient
     {
 
         private View mCustomView;
         private FrameLayout mCustomViewContainer;
         private WebChromeClient.CustomViewCallback mCustomViewCallback;
 
-        public MyWebClient() {}
+        public CustomWebClient() {}
 
         FrameLayout.LayoutParams LayoutParameters = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
 
