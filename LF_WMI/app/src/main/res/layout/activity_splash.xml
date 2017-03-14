@@ -26,19 +26,19 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="380dp"
+                android:layout_height="@dimen/view_character_height"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:layout_gravity="center">
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/character_width"
+                    android:layout_height="@dimen/character_height"
                     android:layout_centerHorizontal="true"
-                    android:scaleType="fitCenter"
+                    android:scaleType="fitXY"
                     android:src="@drawable/character"/>
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_width="@dimen/title_width"
+                    android:layout_height="@dimen/title_height"
                     android:layout_alignParentBottom="true"
                     android:scaleType="fitCenter"
                     android:src="@drawable/title"/>
@@ -50,8 +50,8 @@
                 android:background="@drawable/background_rectangle_grey"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:paddingLeft="45dp"
-                android:paddingRight="45dp"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
                 android:layout_gravity="center"
                 android:orientation="vertical">
                 <TextView
@@ -59,13 +59,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:textColor="@android:color/white"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/splash_font_size"
                     android:text="Partnering you in your financial"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/splash_font_size"
                     android:textColor="@android:color/white"
                     android:text="education journey"/>
             </LinearLayout>
