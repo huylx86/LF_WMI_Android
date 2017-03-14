@@ -22,7 +22,7 @@
         android:background="@color/gold"
         app:tabPaddingStart="0dp"
         app:tabPaddingEnd="0dp"
-        app:tabGravity="fill" />
+         />
 
     <RelativeLayout
         android:layout_width="match_parent"

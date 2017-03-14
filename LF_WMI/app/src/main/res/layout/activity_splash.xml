@@ -40,7 +40,7 @@
                     android:layout_width="@dimen/title_width"
                     android:layout_height="@dimen/title_height"
                     android:layout_alignParentBottom="true"
-                    android:scaleType="fitCenter"
+                    android:scaleType="fitXY"
                     android:src="@drawable/title"/>
             </RelativeLayout>
             <LinearLayout
@@ -50,8 +50,8 @@
                 android:background="@drawable/background_rectangle_grey"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:paddingLeft="35dp"
-                android:paddingRight="35dp"
+                android:paddingLeft="45dp"
+                android:paddingRight="45dp"
                 android:layout_gravity="center"
                 android:orientation="vertical">
                 <TextView

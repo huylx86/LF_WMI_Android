@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="character_width">600dp</dimen>
-    <dimen name="character_height">816dp</dimen>
-    <dimen name="title_width">650dp</dimen>
-    <dimen name="title_height">246dp</dimen>
-    <dimen name="view_character_height">920dp</dimen>
-    <dimen name="splash_font_size">44sp</dimen>
+    <dimen name="character_width">485dp</dimen>
+    <dimen name="character_height">656dp</dimen>
+    <dimen name="title_width">710dp</dimen>
+    <dimen name="title_height">268dp</dimen>
+    <dimen name="view_character_height">790dp</dimen>
+    <dimen name="splash_font_size">47sp</dimen>
 </resources>
