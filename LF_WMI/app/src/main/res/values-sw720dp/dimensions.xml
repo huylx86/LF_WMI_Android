@@ -5,5 +5,5 @@
     <dimen name="title_width">710dp</dimen>
     <dimen name="title_height">268dp</dimen>
     <dimen name="view_character_height">790dp</dimen>
-    <dimen name="splash_font_size">47sp</dimen>
+    <dimen name="splash_font_size">47dp</dimen>
 </resources>
