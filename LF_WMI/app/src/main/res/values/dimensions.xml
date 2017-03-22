@@ -6,4 +6,6 @@
     <dimen name="title_height">113dp</dimen>
     <dimen name="view_character_height">330dp</dimen>
     <dimen name="splash_font_size">16dp</dimen>
+    <dimen name="logo_width">70dp</dimen>
+    <dimen name="logo_height">39dp</dimen>
 </resources>
