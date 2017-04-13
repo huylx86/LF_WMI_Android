@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
     private PagerAdapter mPagerAdapter;
     private TabLayout mTabLayout;
-    private View mContactUs, mFacebook;
-    private View mContactUsDetail, mFacebookDetail;
-    private ImageView mIvContactUsDetail, mIvFacebookDetail;
-    private TextView mTvContactUsDetail, mTvFacebookDetail;
+    private View mContactUs, mFacebook, mPhone;
+    private View mContactUsDetail, mFacebookDetail, mPhoneDetail;
+    private ImageView mIvContactUsDetail, mIvFacebookDetail, mIvPhoneDetail;
+    private TextView mTvContactUsDetail, mTvFacebookDetail, mTvPhoneDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +63,16 @@ public class MainActivity extends AppCompatActivity {
 
         mContactUs = findViewById(R.id.ln_contact_us);
         mFacebook = findViewById(R.id.ln_facebook);
+        mPhone = findViewById(R.id.ln_phone);
         mContactUsDetail = findViewById(R.id.ln_contact_us_detail);
         mFacebookDetail = findViewById(R.id.ln_facebook_detail);
+        mPhoneDetail = findViewById(R.id.ln_phone_detail);
         mIvContactUsDetail = (ImageView)findViewById(R.id.iv_contact_us_detail);
         mIvFacebookDetail = (ImageView)findViewById(R.id.iv_facebook_detail);
+        mIvPhoneDetail = (ImageView)findViewById(R.id.iv_phone_detail);
         mTvContactUsDetail = (TextView) findViewById(R.id.tv_contact_us_detail);
         mTvFacebookDetail = (TextView)findViewById(R.id.tv_facebook_detail);
+        mTvPhoneDetail = (TextView)findViewById(R.id.tv_phone_detail);
 
         final Animation showAnim = AnimationUtils.loadAnimation(this, R.anim.right_to_left_anim);
         final Animation hideAnim = AnimationUtils.loadAnimation(this, R.anim.left_to_right_anim);
@@ -91,6 +95,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPhoneDetail.setVisibility(View.VISIBLE);
+                mPhoneDetail.startAnimation(showAnim);
+                mPhone.setVisibility(View.INVISIBLE);
+            }
+        });
         mIvContactUsDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,13 +121,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mIvPhoneDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPhone.setVisibility(View.VISIBLE);
+                mPhoneDetail.startAnimation(hideAnim);
+                mPhoneDetail.setVisibility(View.INVISIBLE);
+            }
+        });
+
         mTvContactUsDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mContactUs.setVisibility(View.VISIBLE);
                 mContactUsDetail.startAnimation(hideAnim);
                 mContactUsDetail.setVisibility(View.INVISIBLE);
-                loadBrowser(Constants.CONTACT_US_URL);
+                startEmailComposer();
             }
         });
 
@@ -129,23 +150,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        mFacebookDetail.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mFacebookDetail.startAnimation(hideAnim);
-//                mFacebookDetail.setVisibility(View.INVISIBLE);
-//                loadBrowser(Constants.FACEBOOK_URL);
-//            }
-//        });
-//
-//        mContactUsDetail.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mContactUsDetail.startAnimation(hideAnim);
-//                mContactUsDetail.setVisibility(View.INVISIBLE);
-//                loadBrowser(Constants.CONTACT_US_URL);
-//            }
-//        });
+        mTvPhoneDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPhone.setVisibility(View.VISIBLE);
+                mPhoneDetail.startAnimation(hideAnim);
+                mPhoneDetail.setVisibility(View.INVISIBLE);
+                startCallPhone();
+            }
+        });
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -181,5 +194,20 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(browserIntent);
+    }
+
+    private void startEmailComposer()
+    {
+        Intent intent=new Intent(Intent.ACTION_SEND);
+        String[] recipients={"contact@wmi.com.sg"};
+        intent.putExtra(Intent.EXTRA_EMAIL, recipients);
+        intent.setType("plain/text");
+        startActivity(Intent.createChooser(intent, "Send Mail"));
+    }
+
+    private void startCallPhone()
+    {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+6568286988"));
+        startActivity(intent);
     }
 }
