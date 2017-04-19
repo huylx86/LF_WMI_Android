@@ -120,7 +120,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
-        android:layout_above="@id/rl_contact_us">
+        android:layout_above="@id/rl_contact_us"
+        android:id="@+id/rl_facebook">
         <LinearLayout
             android:layout_width="50dp"
             android:layout_height="60dp"

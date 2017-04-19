@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private PagerAdapter mPagerAdapter;
     private TabLayout mTabLayout;
+    private View mMainContactUs, mMainFacebook, mMainPhone;
     private View mContactUs, mFacebook, mPhone;
     private View mContactUsDetail, mFacebookDetail, mPhoneDetail;
     private ImageView mIvContactUsDetail, mIvFacebookDetail, mIvPhoneDetail;
@@ -53,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                if(position == 1){
+                    mMainContactUs.setVisibility(View.INVISIBLE);
+                    mMainFacebook.setVisibility(View.INVISIBLE);
+                    mMainPhone.setVisibility(View.INVISIBLE);
+                } else {
+                    mMainContactUs.setVisibility(View.VISIBLE);
+                    mMainFacebook.setVisibility(View.VISIBLE);
+                    mMainPhone.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -60,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        mMainContactUs = findViewById(R.id.rl_contact_us);
+        mMainFacebook = findViewById(R.id.rl_facebook);
+        mMainPhone = findViewById(R.id.rl_phone);
         mContactUs = findViewById(R.id.ln_contact_us);
         mFacebook = findViewById(R.id.ln_facebook);
         mPhone = findViewById(R.id.ln_phone);

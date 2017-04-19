@@ -5,6 +5,9 @@ package com.wmi.finedu.utils;
  */
 
 public class Constants {
+
+    public static final String API_KEY = "AIzaSyDBWp2PrV4g88LPGDl5g_gzHPEhm6qUe4w";
+
     public static String HOME_TITLE = "Home";
     public static String VIDEOS_TITLE = "Videos";
     public static String ABOUT_US_TITLE = "About Us";
